@@ -1,125 +1,216 @@
+# Body Measurement Exploratory Data Analysis
 
-# Body Measurement Analysis: Retail Sizing Strategy
+## Project Overview
 
-**AWS AI & ML Scholars Program | Accenture & Udacity**
+This project presents an exploratory data analysis (EDA) of a body measurement dataset containing 2,018 records and 14 biometric measurement variables.
 
-Analyzing 2,018 body measurements to solve retail fit problems and inventory waste.
+The analysis focused on:
+- Data quality assessment
+- Descriptive statistics
+- Outlier detection
+- Correlation analysis
+- Distribution analysis
+- Height-based segmentation
+- Waist-to-height ratio analysis
 
-## Problem Statement
+This project was completed as part of the AWS AI & ML Scholars Program by Amazon Web Services and Udacity using AWS PartyRock and Python-based exploratory data analysis techniques.
 
-Retailers lose 15-30% of revenue annually to returns caused by fit dissatisfaction. Standard S-M-L sizing ignores body type variation. This project uses data analysis and machine learning to identify natural customer clusters and recommend precision sizing strategies.
+---
 
-**Business Question:** How can retailers reduce returns 50% and unlock R7.5M+ annual profit by aligning inventory to actual body variation?
+# Dataset Information
 
-## Solution Approach
-
-1. **Correlation Analysis**: Identify which body measurements predict fit outcomes
-2. **Descriptive Statistics**: Quantify size distribution across population
-3. **Clustering**: Discover natural body type segments without predefined categories
-4. **Height Categorization**: Create actionable sizing tiers
-5. **Financial Modeling**: Calculate ROI for implementation
-
-## Key Findings
-
-### Finding 1: Limb Proportionality
-- Arm length correlates with height: **0.913**
-- Leg length correlates with height: **0.910**
-- Height alone predicts sleeve and inseam with 91% accuracy
-
-**Retail Use:** Height-based recommendations are reliable for garment length.
-
-### Finding 2: Torso Variation (The Problem)
-- Waist varies 14.07% across population
-- Chest varies 10.73%
-- Arm length varies only 6.33%
-
-**Retail Use:** Torso shape is the return driver. Waist sizing is critical.
-
-### Finding 3: Three Natural Body Types
-
-Clustering analysis identified statistically significant segments:
-
-- **Petite/Lean**: 368 subjects (18%) | Avg height 164.2cm | Avg chest 93.2cm
-- **Standard**: 806 subjects (40%) | Avg height 172.5cm | Avg chest 116.8cm
-- **Athletic/Large**: 844 subjects (42%) | Avg height 179.6cm | Avg chest 103.3cm
-
-**Retail Use:** Stock inventory by body type, not size alone. Reduces dead stock 22-28%.
-
-### Finding 4: Height Drives Overall Size
-
-| Height Category | Chest (cm) | Waist (cm) | Hip (cm) | Subjects |
-|---|---|---|---|---|
-| Short (<160cm) | 94.9 | 82.6 | 97.0 | 216 |
-| Average (160-175cm) | 99.5 | 87.4 | 101.9 | 1,014 |
-| Tall (>175cm) | 106.6 | 95.0 | 108.8 | 788 |
-
-**Difference:** Tall customers need 12% larger chest and 15% larger waist than short. Standard sizing cannot bridge this gap.
-
-## Financial Impact
-
-### Current Model (S-M-L Sizing)
-- Return rate: 20%
-- Dead stock: 18%
-- Customer satisfaction: 68%
-- Repeat purchase rate: 34%
-
-### Proposed Model (Height Ã— Body Type = 9 SKU Variants)
-- Return rate: 10% (-50%)
-- Dead stock: 6% (-67%)
-- Customer satisfaction: 88% (+20 points)
-- Repeat purchase rate: 52% (+18 points)
-
-### Annual Benefit (R50M Revenue Retailer)
-
-| Impact Driver | Annual Savings |
+| Metric | Value |
 |---|---|
-| Reduced returns | R2.5M |
-| Reduced dead stock | R1.8M |
-| Increased repeat purchase | R3.2M |
-| **Total** | **R7.5M+** |
+| Records | 2,018 |
+| Variables | 15 |
+| Numeric Variables | 14 |
+| Missing Values | 0 |
+| Duplicate Rows | 0 |
 
-**Gross margin improvement: 15%**
+All measurements are recorded in centimeters (cm).
 
-## Recommended Implementation
+## Variables Included
 
-**Sizing Matrix:** 3 Height Tiers Ã— 3 Body Types = 9 SKU Variants
+- Height
+- Waist Circumference
+- Chest Circumference
+- Hip Circumference
+- Thigh Circumference
+- Arm Length
+- Leg Length
+- Wrist Circumference
+- Forearm Circumference
+- Bicep Circumference
+- Shoulder Breadth
+- Shoulder to Crotch
+- Calf Circumference
+- Ankle Circumference
 
-| | Short | Average | Tall |
-|---|---|---|---|
-| Lean | 3% | 7% | 8% |
-| Standard | 6% | 15% | 19% |
-| Athletic | 7% | 18% | 17% |
+---
 
-Stock allocation reflects actual population distribution. Eliminates inventory mismatch.
+# Project Objectives
 
-## Data & Methodology
+The goal of this project was to answer the following analytical questions:
 
-**Dataset:** 2,018 subjects with 14 body measurements
-- Height, arm-length, leg-length, chest, waist, hip, shoulder-breadth, bicep, forearm, neck, knee, ankle, wrist, calf
+- What is the distribution of each body measurement?
+- Which measurements contain the most outliers?
+- Which variables are most strongly correlated?
+- How do body measurements change across height groups?
+- What patterns exist in waist measurements?
+- What does the waist-to-height ratio distribution show?
 
-**Methods:**
-- Pearson correlation analysis for measurement relationships
-- Coefficient of variation for identifying high-variation dimensions
-- K-means clustering (k=3) on standardized measurements
-- Categorical analysis by height tiers
+---
 
+# Tools Used
 
+- Python
+- Pandas
+- NumPy
+- Matplotlib
+- AWS PartyRock
+- Exploratory Data Analysis (EDA)
+
+---
+
+# Data Quality Checks
+
+The dataset was validated before analysis.
+
+| Check | Result |
+|---|---|
+| Missing Values | 0 |
+| Duplicate Rows | 0 |
+| Unique Subject IDs | 2,018 |
+
+No rows or columns were removed during cleaning.
+
+---
+
+# Key Findings
+
+## Descriptive Statistics
+
+- Average height: 172.15 cm
+- Average waist circumference: 89.81 cm
+- Waist circumference showed the highest variability among girth measurements
+- Height distribution was approximately normal with only 1 detected outlier
+
+---
+
+## Correlation Analysis
+
+### Strongest Correlations
+
+| Variable Pair | Pearson Correlation |
+|---|---|
+| Arm Length vs Leg Length | 0.929 |
+| Chest vs Waist | 0.927 |
+| Height vs Leg Length | 0.910 |
+
+### Weakest Correlations
+
+| Variable Pair | Pearson Correlation |
+|---|---|
+| Leg Length vs Thigh | 0.160 |
+| Arm Length vs Thigh | 0.164 |
+
+---
+
+## Outlier Analysis
+
+Outliers were detected using the IQR method.
+
+| Variable | Outlier Count |
+|---|---|
+| Hip Circumference | 63 |
+| Thigh Circumference | 54 |
+| Waist Circumference | 35 |
+
+Hip circumference produced the most extreme upper values in the dataset.
+
+---
+
+## Waist Distribution
+
+- 60.3% of subjects had waist measurements between 75 cm and 95 cm
+- 11.2% of subjects had waist measurements above 105 cm
+
+---
+
+## Waist-to-Height Ratio
+
+| Metric | Value |
+|---|---|
+| Mean WHR | 0.522 |
+| Subjects Above 0.5 WHR | 56.6% |
+| Subjects Below 0.5 WHR | 43.4% |
+
+---
+
+# Visualizations
+
+The project includes:
+- Correlation matrix heatmap
+- Waist distribution chart
+- Outlier analysis chart
+- Height quintile comparison chart
+
+---
+
+# Project Limitations
+
+- No demographic variables included
+- No weight variable available
+- No information about collection methodology
+- No time-series component for trend analysis
+
+---
+
+# Skills Demonstrated
+
+- Data cleaning
+- Exploratory data analysis
+- Statistical analysis
+- Correlation analysis
+- Outlier detection
+- Data visualization
+- Analytical reporting
+- AI-assisted analytics validation
+
+---
+
+# Future Improvements
+
+Potential next steps:
+- Build predictive regression models
+- Create Power BI dashboards
+- Perform clustering analysis
+- Add demographic segmentation
+- Compare linear vs non-linear relationships
+
+---
+
+# Repository Structure
+
+```bash
+body-measurement-analysis/
+│
+├── data/
+│   └── body-measurement-data-set.csv
+│
+├── notebooks/
+│   └── exploratory-data-analysis.ipynb
+│
+├── reports/
+│   └── EDA_Report.pdf
+│
+├── visuals/
+│   ├── correlation-matrix.png
+│   ├── waist-distribution.png
+│   ├── outlier-analysis.png
+│   └── height-quintiles.png
+│
+└── README.md
 ```
 
-
-## Limitations
-
-- Dataset contains body measurements only. Weight data not available.
-- No demographic attributes (age, gender, geographic location).
-- Clustering assumes body shape varies independently of other customer attributes.
-- Financial projections based on retail industry benchmarks. Actual results depend on product mix and execution quality.
-
-## Next Steps
-
-1. **Validate** with your customer returns data (fit-related returns vs other reasons)
-2. **Segment** your current customer base into the three body types
-3. **Test** the 9-SKU matrix in limited product line
-4. **Measure** return rate, dead stock, and customer satisfaction
-5. **Scale** across full inventory
-
-======================================
+---
