@@ -1,19 +1,19 @@
-# Body Measurement Exploratory Data Analysis
+
+# Body Measurement Analysis
 
 ## Project Overview
 
-This project presents an exploratory data analysis (EDA) of a body measurement dataset containing 2,018 records and 14 biometric measurement variables.
+This project presents an AI-assisted exploratory data analysis (EDA) of a body measurement dataset containing 2,018 records and 14 biometric measurement variables.
 
-The analysis focused on:
-- Data quality assessment
-- Descriptive statistics
-- Outlier detection
-- Correlation analysis
-- Distribution analysis
-- Height-based segmentation
-- Waist-to-height ratio analysis
+The analysis was completed using AWS PartyRock as part of the AWS AI & ML Scholars Program by Amazon Web Services and Udacity.
 
-This project was completed as part of the AWS AI & ML Scholars Program by Amazon Web Services and Udacity using AWS PartyRock and Python-based exploratory data analysis techniques.
+The project focused on:
+- Reviewing AI-generated insights
+- Validating analytical findings
+- Identifying patterns and correlations
+- Summarizing observations using structured reporting
+
+The analysis remained descriptive and based only on the uploaded dataset.
 
 ---
 
@@ -27,166 +27,72 @@ This project was completed as part of the AWS AI & ML Scholars Program by Amazon
 | Missing Values | 0 |
 | Duplicate Rows | 0 |
 
-All measurements are recorded in centimeters (cm).
-
-## Variables Included
-
-- Height
-- Waist Circumference
-- Chest Circumference
-- Hip Circumference
-- Thigh Circumference
-- Arm Length
-- Leg Length
-- Wrist Circumference
-- Forearm Circumference
-- Bicep Circumference
-- Shoulder Breadth
-- Shoulder to Crotch
-- Calf Circumference
-- Ankle Circumference
+All measurements were recorded in centimeters (cm).
 
 ---
 
-# Project Objectives
+# Analysis Areas
 
-The goal of this project was to answer the following analytical questions:
-
-- What is the distribution of each body measurement?
-- Which measurements contain the most outliers?
-- Which variables are most strongly correlated?
-- How do body measurements change across height groups?
-- What patterns exist in waist measurements?
-- What does the waist-to-height ratio distribution show?
-
----
-
-# Tools Used
-
-- Python
-- Pandas
-- NumPy
-- Matplotlib
-- AWS PartyRock
-- Exploratory Data Analysis (EDA)
-
----
-
-# Data Quality Checks
-
-The dataset was validated before analysis.
-
-| Check | Result |
-|---|---|
-| Missing Values | 0 |
-| Duplicate Rows | 0 |
-| Unique Subject IDs | 2,018 |
-
-No rows or columns were removed during cleaning.
+The project included:
+- Data quality checks
+- Descriptive statistics review
+- Correlation analysis
+- Outlier analysis using the IQR method
+- Waist circumference distribution analysis
+- Height-based segmentation
+- Waist-to-height ratio analysis
 
 ---
 
 # Key Findings
 
-## Descriptive Statistics
-
-- Average height: 172.15 cm
-- Average waist circumference: 89.81 cm
-- Waist circumference showed the highest variability among girth measurements
-- Height distribution was approximately normal with only 1 detected outlier
+## Data Quality
+- The dataset contained 0 missing values.
+- The dataset contained 0 duplicate rows.
+- All records represented unique subject identifiers.
 
 ---
 
 ## Correlation Analysis
 
-### Strongest Correlations
+Strongest relationships identified:
+- Arm Length vs Leg Length → r = 0.929
+- Chest vs Waist → r = 0.927
+- Height vs Leg Length → r = 0.910
 
-| Variable Pair | Pearson Correlation |
-|---|---|
-| Arm Length vs Leg Length | 0.929 |
-| Chest vs Waist | 0.927 |
-| Height vs Leg Length | 0.910 |
-
-### Weakest Correlations
-
-| Variable Pair | Pearson Correlation |
-|---|---|
-| Leg Length vs Thigh | 0.160 |
-| Arm Length vs Thigh | 0.164 |
+Weakest relationships identified:
+- Leg Length vs Thigh → r = 0.160
+- Arm Length vs Thigh → r = 0.164
 
 ---
 
 ## Outlier Analysis
-
-Outliers were detected using the IQR method.
-
-| Variable | Outlier Count |
-|---|---|
-| Hip Circumference | 63 |
-| Thigh Circumference | 54 |
-| Waist Circumference | 35 |
-
-Hip circumference produced the most extreme upper values in the dataset.
+- Hip circumference produced the highest outlier count.
+- Waist and thigh measurements also showed elevated outlier frequencies.
+- Outliers were retained because the dataset did not provide evidence to classify them as errors.
 
 ---
 
 ## Waist Distribution
-
-- 60.3% of subjects had waist measurements between 75 cm and 95 cm
-- 11.2% of subjects had waist measurements above 105 cm
+- 60.3% of subjects had waist measurements between 75 cm and 95 cm.
+- The waist distribution showed right skew due to higher upper-range values.
 
 ---
 
 ## Waist-to-Height Ratio
+- Mean waist-to-height ratio: 0.522
+- 56.6% of subjects had a ratio above 0.5
 
-| Metric | Value |
-|---|---|
-| Mean WHR | 0.522 |
-| Subjects Above 0.5 WHR | 56.6% |
-| Subjects Below 0.5 WHR | 43.4% |
+This analysis described dataset patterns only and did not make medical conclusions.
 
 ---
 
-# Visualizations
+# Tools Used
 
-The project includes:
-- Correlation matrix heatmap
-- Waist distribution chart
-- Outlier analysis chart
-- Height quintile comparison chart
-
----
-
-# Project Limitations
-
-- No demographic variables included
-- No weight variable available
-- No information about collection methodology
-- No time-series component for trend analysis
-
----
-
-# Skills Demonstrated
-
-- Data cleaning
-- Exploratory data analysis
-- Statistical analysis
-- Correlation analysis
-- Outlier detection
-- Data visualization
+- AWS PartyRock
+- AI-assisted data analysis
+- Exploratory data analysis (EDA)
 - Analytical reporting
-- AI-assisted analytics validation
-
----
-
-# Future Improvements
-
-Potential next steps:
-- Build predictive regression models
-- Create Power BI dashboards
-- Perform clustering analysis
-- Add demographic segmentation
-- Compare linear vs non-linear relationships
 
 ---
 
@@ -198,19 +104,64 @@ body-measurement-analysis/
 ├── data/
 │   └── body-measurement-data-set.csv
 │
-├── notebooks/
-│   └── exploratory-data-analysis.ipynb
+├── prompts/
+│   └── analysis-prompts.md
 │
 ├── reports/
-│   └── EDA_Report.pdf
+│   └── project-summary.md
 │
-├── visuals/
-│   ├── correlation-matrix.png
-│   ├── waist-distribution.png
-│   ├── outlier-analysis.png
-│   └── height-quintiles.png
+├── screenshots/
+│   └── partyrock-analysis.png
 │
 └── README.md
 ```
+
+---
+
+# Skills Demonstrated
+
+This project helped strengthen skills in:
+- Exploratory data analysis
+- Data interpretation
+- Analytical reporting
+- Reviewing AI-generated insights critically
+- Identifying patterns and relationships in structured data
+- Communicating findings clearly
+
+---
+
+# Project Limitations
+
+The dataset did not include:
+- Age
+- Sex
+- Weight
+- Geographic information
+- Collection methodology
+
+Because of these limitations:
+- No subgroup analysis was performed
+- No BMI calculations were possible
+- No population-level conclusions were made
+
+---
+
+# Reflection
+
+This project demonstrated how AI-assisted tools can support exploratory analysis while still requiring human review and validation.
+
+The experience reinforced the importance of:
+- Verifying AI-generated outputs
+- Understanding dataset limitations
+- Avoiding unsupported assumptions
+- Communicating findings accurately
+
+---
+
+# Screenshot
+
+Example analysis interface from AWS PartyRock:
+
+![PartyRock Analysis](screenshots/partyrock-analysis.png)
 
 ---
